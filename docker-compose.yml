@@ -1,0 +1,35 @@
+version: "3"                                                                                                                    
+services:                                                                                                                       
+  ceos-1:                                                                                                                       
+    hostname: CEOS-1                                                                                                            
+    image: ceosimage:4.20.5F                                                                                                        
+    privileged: true                                                                                                            
+    command: "/sbin/init"
+    environment:                                                                                                                
+      container: docker                                                                                                         
+      CEOS: 1                                                                                                                   
+      EOS_PLATFORM: ceossim                                                                                                      
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
+      ETBA: 1                                                                                                                   
+      INTFTYPE: eth                                                                                                                                                                                        
+    networks:                                                                                                                   
+      default:                                                                                                                  
+      p2p:                                                                                                                    
+  ceos-2:                                                                                                                       
+    hostname: CEOS-2                                                                                                            
+    image: ceosimage:4.20.5F                                                                                                        
+    privileged: true
+    command: "/sbin/init"                                                                                                         
+    environment:                                                                                                                
+      container: docker                                                                                                         
+      CEOS: 1                                                                                                                   
+      EOS_PLATFORM: ceossim
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
+      ETBA: 1                                                                                                                   
+      INTFTYPE: eth                                                                                                                                                                                        
+    networks:                                                                                                                   
+      default:                                                                                                                  
+      p2p:                                                                                                                    
+                                                                                                                       
+networks:                                                                                                                       
+  p2p: 
