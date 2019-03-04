@@ -1,0 +1,4 @@
+enable
+conf t
+management api http
+no shut

@@ -1,22 +1,32 @@
 version: "3"                                                                                                                    
-services:                                                                                                                       
-  ceos-1:                                                                                                                       
-    hostname: CEOS-1                                                                                                            
+services:    
+
+  spine-1:                                                                                                                       
+    hostname: SPINE-1                                                                                                            
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true                                                                                                            
-    command: "/sbin/init"
+    command: 
+      - "/sbin/init"
     environment:                                                                                                                
       container: docker                                                                                                         
       CEOS: 1                                                                                                                   
       EOS_PLATFORM: ceossim                                                                                                      
       SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
       ETBA: 1                                                                                                                   
-      INTFTYPE: eth                                                                                                                                                                                        
+      INTFTYPE: eth  
+    ports:
+      - "3001:22" 
+      - "8001:443"                                                                                                                                                                                     
     networks:                                                                                                                   
       default:                                                                                                                  
-      p2p:                                                                                                                    
-  ceos-2:                                                                                                                       
-    hostname: CEOS-2                                                                                                            
+      s1-s2:
+      s1-l1:
+      s1-l2:
+      s1-l3:
+      s1-l4: 
+
+  spine-2:                                                                                                                       
+    hostname: SPINE-2                                                                                                            
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true
     command: "/sbin/init"                                                                                                         
@@ -26,10 +36,112 @@ services:
       EOS_PLATFORM: ceossim
       SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
       ETBA: 1                                                                                                                   
-      INTFTYPE: eth                                                                                                                                                                                        
+      INTFTYPE: eth    
+    ports:
+      - "3002:22" 
+      - "8002:443"
     networks:                                                                                                                   
       default:                                                                                                                  
-      p2p:                                                                                                                    
+      s1-s2: 
+      s2-l1:
+      s2-l2:
+      s2-l3:
+      s2-l4:  
+
+  leaf-1:                                                                                                                       
+    hostname: LEAF-1                                                                                                            
+    image: ceosimage:4.20.5F                                                                                                        
+    privileged: true                                                                                                            
+    command: "/sbin/init"
+    environment:                                                                                                                
+      container: docker                                                                                                         
+      CEOS: 1                                                                                                                   
+      EOS_PLATFORM: ceossim                                                                                                      
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
+      ETBA: 1                                                                                                                   
+      INTFTYPE: eth  
+    ports:
+      - "3011:22" 
+      - "8011:443"                                                                                                                                                                                      
+    networks:                                                                                                                   
+      default:                                                                                                                  
+      l1-l2:
+      s1-l1: 
+      s2-l1:  
+
+  leaf-2:                                                                                                                       
+    hostname: LEAF-2                                                                                                           
+    image: ceosimage:4.20.5F                                                                                                        
+    privileged: true                                                                                                            
+    command: "/sbin/init"
+    environment:                                                                                                                
+      container: docker                                                                                                         
+      CEOS: 1                                                                                                                   
+      EOS_PLATFORM: ceossim                                                                                                      
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
+      ETBA: 1                                                                                                                   
+      INTFTYPE: eth  
+    ports:
+      - "3012:22" 
+      - "8012:443"                                                                                                                                                                                         
+    networks:                                                                                                                   
+      default:                                                                                                                  
+      l1-l2:
+      s1-l2:  
+      s2-l2:
+
+  leaf-3:                                                                                                                       
+    hostname: LEAF-3                                                                                                            
+    image: ceosimage:4.20.5F                                                                                                        
+    privileged: true                                                                                                            
+    command: "/sbin/init"
+    environment:                                                                                                                
+      container: docker                                                                                                         
+      CEOS: 1                                                                                                                   
+      EOS_PLATFORM: ceossim                                                                                                      
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
+      ETBA: 1                                                                                                                   
+      INTFTYPE: eth 
+    ports:
+      - "3013:22" 
+      - "8013:443"                                                                                                                                                                                          
+    networks:                                                                                                                   
+      default:                                                                                                                  
+      l3-l4:
+      s1-l3:
+      s2-l3:  
+
+  leaf-4:                                                                                                                       
+    hostname: LEAF-4                                                                                                           
+    image: ceosimage:4.20.5F                                                                                                        
+    privileged: true                                                                                                            
+    command: "/sbin/init"
+    environment:                                                                                                                
+      container: docker                                                                                                         
+      CEOS: 1                                                                                                                   
+      EOS_PLATFORM: ceossim                                                                                                      
+      SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT: 1                                                                                    
+      ETBA: 1                                                                                                                   
+      INTFTYPE: eth  
+    ports:
+      - "3014:22" 
+      - "8014:443"                                                                                                                                                                                         
+    networks:                                                                                                                   
+      default:                                                                                                                  
+      l3-l4:
+      s1-l4:
+      s2-l4:                                                                                                                 
                                                                                                                        
 networks:                                                                                                                       
-  p2p: 
+  s1-s2: 
+  l1-l2:
+  l3-l4:
+  s1-l1:
+  s1-l2:
+  s1-l3:
+  s1-l4: 
+  s2-l1:
+  s2-l2:
+  s2-l3:
+  s2-l4: 
+
