@@ -1,8 +1,27 @@
-[SPINE]
-docker-ceos_spine-1_1
-docker-ceos_spine-2_1
-[LEAF]
-docker-ceos_leaf-1_1
-docker-ceos_leaf-2_1
-docker-ceos_leaf-3_1
-docker-ceos_leaf-4_1
+[spine]
+docker-ceos_spine-1_1 https_port=8001
+docker-ceos_spine-2_1 https_port=8002
+
+[spine:vars]
+ansible_host = 127.0.0.1
+ansible_connection = httpapi
+ansible_network_os = eos
+ansible_user = ansible
+ansible_ssh_pass = ansible
+ansible_become = yes
+ansible_become_method = enable
+
+[leaf]
+docker-ceos_leaf-1_1  https_port=8011
+docker-ceos_leaf-2_1  https_port=8012
+docker-ceos_leaf-3_1  https_port=8013
+docker-ceos_leaf-4_1  https_port=8014
+
+[leaf:vars]
+ansible_host = 127.0.0.1
+ansible_connection = httpapi
+ansible_network_os = eos
+ansible_user = ansible
+ansible_ssh_pass = ansible
+ansible_become = yes
+ansible_become_method = enable

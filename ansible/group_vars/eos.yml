@@ -1,0 +1,6 @@
+ansible_connection: httpapi
+ansible_network_os: eos
+ansible_user: ansible
+ansible_ssh_pass: andible
+ansible_become: yes
+ansible_become_method: enable
