@@ -16,7 +16,7 @@ services:
       INTFTYPE: eth  
     ports:
       - "3001:22" 
-      - "8001:443"                                                                                                                                                                                     
+      - "8001:80"                                                                                                                                                                                     
     networks:                                                                                                                   
       default:                                                                                                                  
       s1-s2:
@@ -39,7 +39,7 @@ services:
       INTFTYPE: eth    
     ports:
       - "3002:22" 
-      - "8002:443"
+      - "8002:80"
     networks:                                                                                                                   
       default:                                                                                                                  
       s1-s2: 
@@ -62,7 +62,7 @@ services:
       INTFTYPE: eth  
     ports:
       - "3011:22" 
-      - "8011:443"                                                                                                                                                                                      
+      - "8011:80"                                                                                                                                                                                      
     networks:                                                                                                                   
       default:                                                                                                                  
       l1-l2:
@@ -83,7 +83,7 @@ services:
       INTFTYPE: eth  
     ports:
       - "3012:22" 
-      - "8012:443"                                                                                                                                                                                         
+      - "8012:80"                                                                                                                                                                                         
     networks:                                                                                                                   
       default:                                                                                                                  
       l1-l2:
@@ -104,7 +104,7 @@ services:
       INTFTYPE: eth 
     ports:
       - "3013:22" 
-      - "8013:443"                                                                                                                                                                                          
+      - "8013:80"                                                                                                                                                                                          
     networks:                                                                                                                   
       default:                                                                                                                  
       l3-l4:
@@ -125,7 +125,7 @@ services:
       INTFTYPE: eth  
     ports:
       - "3014:22" 
-      - "8014:443"                                                                                                                                                                                         
+      - "8014:80"                                                                                                                                                                                         
     networks:                                                                                                                   
       default:                                                                                                                  
       l3-l4:

@@ -1,0 +1,8 @@
+- name: Network Getting Started First Playbook
+  gather_facts: false
+  hosts: all
+  tasks:
+
+    - name: run show version on remote devices
+      eos_command:
+        commands: show version

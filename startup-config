@@ -1,6 +1,8 @@
 username ansible secret ansible
 !
 management api http-commands
+   protocol http
+   protocol unix-socket
    no shutdown
 !
 end
