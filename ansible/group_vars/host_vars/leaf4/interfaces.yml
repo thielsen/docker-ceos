@@ -1,0 +1,10 @@
+interfaces:
+  - name: Ethernet1
+    ipv4_address: 10.0.101.2/24
+    mode: l3_ipv4
+  - name: Ethernet2
+    ipv4_address: 10.0.4.2/24
+    mode: l3_ipv4
+  - name: Ethernet3
+    ipv4_address: 10.4.0.2/24
+    mode: l3_ipv4

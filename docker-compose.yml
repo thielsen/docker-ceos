@@ -19,7 +19,6 @@ services:
       - "8001:80"                                                                                                                                                                                     
     networks:                                                                                                                   
       default:                                                                                                                  
-      s1-s2:
       s1-l1:
       s1-l2:
       s1-l3:
@@ -42,7 +41,6 @@ services:
       - "8002:80"
     networks:                                                                                                                   
       default:                                                                                                                  
-      s1-s2: 
       s2-l1:
       s2-l2:
       s2-l3:
@@ -133,15 +131,64 @@ services:
       s2-l4:                                                                                                                 
                                                                                                                        
 networks:                                                                                                                       
-  s1-s2: 
   l1-l2:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.100.0/24
   l3-l4:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.101.0/24
   s1-l1:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.13.0/24
   s1-l2:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.14.0/24
   s1-l3:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.21.0/24
   s1-l4: 
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.22.0/24
   s2-l1:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.23.0/24
   s2-l2:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.24.0/24
   s2-l3:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.23.0/24
   s2-l4: 
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.24.0/24
 
