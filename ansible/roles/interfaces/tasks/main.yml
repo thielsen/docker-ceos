@@ -1,0 +1,4 @@
+- name: configure interfaces
+  template: >
+    src=interfaces.j2
+    dest=/tmp/
