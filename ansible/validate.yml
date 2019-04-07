@@ -1,0 +1,35 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Show version
+    eos_command:
+      commands:
+        - "show version | json"
+    register: show_version
+
+  - name:  Show ip bgp summary
+    eos_command:
+      commands:
+        - "show ip bgp summary | json"
+    register: show_ip_bgp
+
+  - name : Check version and model
+    assert:
+      that:
+        - "'4.20.5F' == show_version['stdout'][0]['version']"
+        - "'cEOSSim' == show_version['stdout'][0]['modelName']"
+  
+  - name: print variable
+    debug:
+      msg: "{{ show_ip_bgp['stdout'][0]['vrfs']['default']['asn'] }}"
+  
+  - name: print variable
+    debug:
+      msg: "{{ asn }}"
+
+  - name: Check bgp
+    assert:
+      that:
+        - "'{{ asn }}' == show_ip_bgp['stdout'][0]['vrfs']['default']['asn']"
+
+  
