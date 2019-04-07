@@ -160,13 +160,13 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 172.16.21.0/24
+      - subnet: 172.16.15.0/24
   s1-l4: 
     driver: bridge
     ipam:
       driver: default
       config:
-      - subnet: 172.16.22.0/24
+      - subnet: 172.16.16.0/24
   s2-l1:
     driver: bridge
     ipam:
@@ -184,11 +184,11 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 172.16.23.0/24
+      - subnet: 172.16.25.0/24
   s2-l4: 
     driver: bridge
     ipam:
       driver: default
       config:
-      - subnet: 172.16.24.0/24
+      - subnet: 172.16.26.0/24
 
