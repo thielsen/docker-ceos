@@ -4,3 +4,4 @@
   roles:
     - interfaces
     - hostname
+    - bgp

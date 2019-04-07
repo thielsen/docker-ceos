@@ -1,0 +1,11 @@
+asn: 65012
+router_id: 1.1.2.1
+bgp_password: "fabric"
+neighbors:
+  - peer_description: spine-1
+    peer_ip: 10.0.2.1
+    peer_asn: 65000
+  - peer_description: spine-2
+    peer_ip: 10.2.0.1
+    peer_asn: 65000
+

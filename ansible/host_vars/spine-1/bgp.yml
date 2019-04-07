@@ -1,0 +1,16 @@
+asn: 65000
+router_id: 1.1.1.1
+bgp_password: "fabric"
+neighbors:
+  - peer_description: leaf-1
+    peer_ip: 10.0.1.2
+    peer_asn: 65011
+  - peer_description: leaf-2
+    peer_ip: 10.0.2.2
+    peer_asn: 65012
+  - peer_description: leaf-3
+    peer_ip: 10.0.3.2
+    peer_asn: 65013
+  - peer_description: leaf-4
+    peer_ip: 10.0.4.2
+    peer_asn: 65014

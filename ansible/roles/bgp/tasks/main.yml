@@ -1,0 +1,3 @@
+- name: configure bgp
+  eos_config:
+    src: bgp.j2
