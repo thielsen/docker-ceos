@@ -18,18 +18,20 @@
       that:
         - "'4.20.5F' == show_version['stdout'][0]['version']"
         - "'cEOSSim' == show_version['stdout'][0]['modelName']"
-  
-  - name: print variable
-    debug:
-      msg: "{{ show_ip_bgp['stdout'][0]['vrfs']['default']['asn'] }}"
-  
-  - name: print variable
-    debug:
-      msg: "{{ asn }}"
 
-  - name: Check bgp
+  - name: Check basic bgp setting
+    ignore_errors: yes
     assert:
       that:
         - "'{{ asn }}' == show_ip_bgp['stdout'][0]['vrfs']['default']['asn']"
+        - "'{{ router_id }}' == show_ip_bgp['stdout'][0]['vrfs']['default']['routerId']"
+
+  - name: Check bgp peers established
+    ignore_errors: yes
+    assert:
+      that:
+        - "'Established' == show_ip_bgp['stdout'][0]['vrfs']['default']['peers']['{{ item['peer_ip'] }}']['peerState']"
+    loop: "{{ neighbors }}"
+
 
   

@@ -4,15 +4,21 @@ WIP on a dockerized Arista leaf-spine test environment to replace my Vagrant env
 
 ## Installation instructions
 
-Clone this repo
+Clone this repo then make sure docker is installed and fire up the containers with:
 ````
 docker-compose up -d
 ````
-You'll see an error about aaa but thats fine...
-Wait a minute for everything to come up...
+You'll see an error about aaa but thats fine... Wait a minute for everything to come up and then we run a quick shell script to set up usernames/passwords and get the api up and running for Ansible.
 ````
 bash setup.sh
+````
+You should see 'Copy completed successfully' printed out 6 times of this works properly. Now run the Ansible provisioning with:
+````
 ansible-playbook -i ansible/hosts ansible/provision.yml
+````
+Finally you can validate all is well with:
+````
+ansible-playbook -i ansible/hosts ansible/validate.yml
 ````
 
 ## Switches and ports
