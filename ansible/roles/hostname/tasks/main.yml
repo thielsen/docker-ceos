@@ -1,3 +1,4 @@
-- name: hostname
+- name: set hostname
   eos_system:
     hostname: "{{ inventory_hostname }}"
+    domain_name: "test.com"

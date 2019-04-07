@@ -1,6 +1,6 @@
 [spine]
-docker-ceos_spine-1_1 ansible_port=3001
-docker-ceos_spine-2_1 ansible_port=3002
+spine-1 ansible_port=3001
+spine-2 ansible_port=3002
 
 [spine:vars]
 ansible_ssh_host = 127.0.0.1
@@ -12,10 +12,10 @@ ansible_become_method = enable
 ansible_connection = network_cli
 
 [leaf]
-docker-ceos_leaf-1_1  ansible_port=3011
-docker-ceos_leaf-2_1  ansible_port=3012
-docker-ceos_leaf-3_1  ansible_port=3013
-docker-ceos_leaf-4_1  ansible_port=3014
+leaf-1  ansible_port=3011
+leaf-2  ansible_port=3012
+leaf-3  ansible_port=3013
+leaf-4  ansible_port=3014
 
 [leaf:vars]
 ansible_ssh_host = 127.0.0.1

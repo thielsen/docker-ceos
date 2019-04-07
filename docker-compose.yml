@@ -2,7 +2,8 @@ version: "3"
 services:    
 
   spine-1:                                                                                                                       
-    hostname: SPINE-1                                                                                                            
+    hostname: spine-1
+    container_name: spine-1                                                                                                           
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true                                                                                                            
     command: 
@@ -25,7 +26,8 @@ services:
       s1-l4: 
 
   spine-2:                                                                                                                       
-    hostname: SPINE-2                                                                                                            
+    hostname: spine-2   
+    container_name: spine-2                                                                                                         
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true
     command: "/sbin/init"                                                                                                         
@@ -47,7 +49,8 @@ services:
       s2-l4:  
 
   leaf-1:                                                                                                                       
-    hostname: LEAF-1                                                                                                            
+    hostname: leaf-1     
+    container_name: leaf-1                                                                                                          
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true                                                                                                            
     command: "/sbin/init"
@@ -68,7 +71,8 @@ services:
       s2-l1:  
 
   leaf-2:                                                                                                                       
-    hostname: LEAF-2                                                                                                           
+    hostname: leaf-2       
+    container_name: leaf-2                                                                                                   
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true                                                                                                            
     command: "/sbin/init"
@@ -89,7 +93,8 @@ services:
       s2-l2:
 
   leaf-3:                                                                                                                       
-    hostname: LEAF-3                                                                                                            
+    hostname: leaf-3   
+    container_name: leaf-3                                                                                                         
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true                                                                                                            
     command: "/sbin/init"
@@ -110,7 +115,8 @@ services:
       s2-l3:  
 
   leaf-4:                                                                                                                       
-    hostname: LEAF-4                                                                                                           
+    hostname: leaf-4     
+    container_name: leaf-4                                                                                                      
     image: ceosimage:4.20.5F                                                                                                        
     privileged: true                                                                                                            
     command: "/sbin/init"
