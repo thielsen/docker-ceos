@@ -6,25 +6,31 @@
       commands:
         - "show version | json"
     register: show_version
+  - set_fact: 
+      os_version: show_version['stdout'][0]['version']
+      model_name: show_version['stdout'][0]['modelName']
 
   - name:  Show ip bgp summary
     eos_command:
       commands:
         - "show ip bgp summary | json"
     register: show_ip_bgp
+  - set_fact:
+      bgp_asn: show_ip_bgp['stdout'][0]['vrfs']['default']['asn']
+      bgp_rid: show_ip_bgp['stdout'][0]['vrfs']['default']['routerId']
 
   - name : Check version and model
     assert:
       that:
-        - "'4.20.5F' == show_version['stdout'][0]['version']"
-        - "'cEOSSim' == show_version['stdout'][0]['modelName']"
+        - "'4.20.5F' == {{os_version}}"
+        - "'cEOSSim' == {{model_name}}"
 
   - name: Check basic bgp setting
     ignore_errors: yes
     assert:
       that:
-        - "'{{ asn }}' == show_ip_bgp['stdout'][0]['vrfs']['default']['asn']"
-        - "'{{ router_id }}' == show_ip_bgp['stdout'][0]['vrfs']['default']['routerId']"
+        - "'{{ asn }}' == {{bgp_asn}}"
+        - "'{{ router_id }}' == {{bgp_rid}}"
 
   - name: Check bgp peers established
     ignore_errors: yes
