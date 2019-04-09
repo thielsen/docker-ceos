@@ -36,8 +36,11 @@
     ignore_errors: yes
     assert:
       that:
-        - "'Established' == show_ip_bgp['stdout'][0]['vrfs']['default']['peers']['{{ item['peer_ip'] }}']['peerState']"
+        - "'Established' == show_ip_bgp['stdout'][0]['vrfs']['default']['peers']['{{ neighbor['peer_ip'] }}']['peerState']"
     loop: "{{ neighbors }}"
+    loop_control:
+      loop_var: neighbor
+      label: "Checking peer {{neighbor}}"
 
 
   
